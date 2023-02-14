@@ -1,0 +1,35 @@
+<div *ngIf="loadedData">
+  <app-add-form></app-add-form>
+  <div class="container">
+    <div class="products">
+      <mat-card *ngFor="let product of loadedData.result">
+        <mat-card-content>
+          <p>CodIdx:{{product.codIdx}}</p>
+          <p>CodMagazin:{{product.storeCode}}</p>
+          <p>Denumire:{{product.name}}</p>
+          <p>Data inregistrare:{{product.registrationDate | date }}</p>
+          <p>Canitate: {{product.quantity}}</p>
+          <p>Pret Unitar: {{product.unitPrice}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warm" [routerLink]="'/' + product.codIdx">
+            Edit
+          </button>
+          <button mat-raised-button color="red" (click)="triggerDelete(product)">
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <mat-paginator
+      #paginator
+      (page)="handlePageEvent($event)"
+      [length]="loadedData.totalCount || 0"
+      [pageSize]="loadedData.pageSize || 0"
+      [pageSizeOptions]="[]"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</div>

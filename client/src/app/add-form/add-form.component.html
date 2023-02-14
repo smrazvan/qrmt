@@ -1,0 +1,40 @@
+<div class="container">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Cod Idx</mat-label>
+      <input type="text" matInput name="codIdx" formControlName="codIdx" />
+      <mat-error>
+        Please enter a valid code
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Store Code</mat-label>
+      <input type="text" matInput name="storeCode" formControlName="storeCode"/>
+      <mat-error>
+        Please enter a valid store code
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput name="name" formControlName="name"/>
+      <mat-error>
+        Please enter a valid name
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Quanity</mat-label>
+      <input type="number" matInput name="quantity" formControlName="quantity"/>
+      <mat-error>
+        Please enter a valid quantity
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Unit price</mat-label>
+      <input type="number" matInput name="unitPrice" formControlName="unitPrice"/>
+      <mat-error>
+        Please enter a valid price
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="!addForm.valid" mat-raised-button color="primary" type="submit">Add</button>
+  </form>
+</div>
